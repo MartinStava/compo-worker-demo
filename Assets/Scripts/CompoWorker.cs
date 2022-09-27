@@ -24,6 +24,11 @@ public class CompoWorker : MonoBehaviour
         {
             transform.position = transform.position + new Vector3(0, 0, _speed * Time.deltaTime);
         }
+
+        if (Input.GetMouseButtonDown(0))
+        {
+            StartMovement();
+        }
     }
 
     IEnumerator Movement()
@@ -43,6 +48,9 @@ public class CompoWorker : MonoBehaviour
 
     public void StartMovement()
     {
-        StartCoroutine(Movement());
+        if (!_moving)
+        {
+            StartCoroutine(Movement());
+        }
     }
 }
